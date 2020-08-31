@@ -15,11 +15,25 @@ module.exports = {
         ]
       },
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        test: /.js?x?$/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+            sourceType: "unambiguous",
+            plugins: [
+              [
+                "@babel/plugin-proposal-object-rest-spread",
+                { useBuiltIns: true }
+              ],
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-syntax-dynamic-import",
+              "@babel/plugin-proposal-optional-chaining",
+              "@babel/plugin-transform-runtime"
+            ]
+          }
+        },
+        exclude: /node_modules/,
       },
       {
         test: /\.html$/,
@@ -28,6 +42,10 @@ module.exports = {
             loader: "html-loader"
           }
         ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [{ loader: "file-loader" }]
       }
     ]
   },
