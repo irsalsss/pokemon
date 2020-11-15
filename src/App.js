@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary';
+import Loading from './components/shared/Loading';
 import './index.css'
+import ErrorPage from './pages/ErrorPage';
+
+const HomePage = lazy(() => import('./pages/HomePage'))
 
 const App = () => {
-  const irsal = [
-    { name: "irsal" },
-    { name: "james" },
-  ]
+
   return (
-    <div>
-      {irsal.map((val, idx) => (
-        <p>{val.name}</p>
-      ))}
-      <h1>Hello World</h1>
-      <input class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="email" placeholder="jane@example.com"></input>
-    </div>
+    <Suspense fallback={<Loading />}>
+      <BrowserRouter>
+        <ErrorBoundary FallbackComponent={ErrorPage}>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+          </Switch>
+        </ErrorBoundary>
+      </BrowserRouter>
+    </Suspense>
   )
 }
 

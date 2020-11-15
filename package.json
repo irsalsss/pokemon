@@ -36,6 +36,7 @@
     "html-webpack-plugin": "^4.3.0",
     "postcss": "^7.0.32",
     "postcss-loader": "^3.0.0",
+    "source-map-loader": "^1.1.2",
     "style-loader": "^1.2.1",
     "tailwindcss": "^1.7.6",
     "webpack": "^4.44.1",
@@ -44,6 +45,8 @@
   },
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-error-boundary": "^3.0.2",
+    "react-router-dom": "^5.2.0"
   }
 }
