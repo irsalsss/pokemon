@@ -11,10 +11,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/irsalsss/boilerplate/issues"
-  },
-  "homepage": "https://github.com/irsalsss/boilerplate#readme",
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
