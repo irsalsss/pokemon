@@ -1,19 +1,13 @@
-import React from 'react'
+import React from 'react';
+import './Loading.scss';
+
 
 const Loading = () => {
   return (
-    <div className="flex justify-center items-center h-screen w-screen">
-      <div className="flex justify-between items-center h-auto w-48">
-        <span className="h-8 w-8">
-          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-pink-400 opacity-75"></span>
-        </span>
-        <span className="h-8 w-8">
-          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-pink-400 opacity-75"></span>
-        </span>
-        <span className="h-8 w-8">
-          <span className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-pink-400 opacity-75"></span>
-        </span>
-      </div>
+    <div className="spinner">
+      <span className="spinner-inner-1"></span>
+      <span className="spinner-inner-2"></span>
+      <span className="spinner-inner-3"></span>
     </div>
   )
 }

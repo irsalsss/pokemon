@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const isDevelopment = process.env.NODE_ENV === 'development'
 const path = require('path');
 
 module.exports = {
