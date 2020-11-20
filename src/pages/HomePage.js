@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { listPokemons } from '../client/PokemonApi';
 import { PrimaryButton, SecondaryButton } from '../components/shared/Button';
+import Card from '../components/shared/Card';
 import './HomePage.scss';
 
 const HomePage = () => {
@@ -19,6 +20,9 @@ const HomePage = () => {
       Ini adalah HomePage
       <SecondaryButton>HomePage</SecondaryButton>
       <PrimaryButton>HomePage</PrimaryButton>
+      <Card>
+        <p>Bulbasaur</p>
+      </Card>
     </div>
   )
 }

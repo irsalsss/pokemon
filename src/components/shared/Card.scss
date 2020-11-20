@@ -1,0 +1,36 @@
+.container-card {
+  cursor: pointer;
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+  position: relative;
+  padding: 16px;
+  width: 200px;
+  transition: 0.3s;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+  .yellow-box {
+    background-color: #ffde00;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  .card-id {
+    position: absolute;
+    top: -16px;
+    left: 16px;
+  }
+
+  .card-total-owned {
+    position: absolute;
+    bottom: -16px;
+    left: 16px;
+  }
+
+  &:hover {
+    -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    -moz-box-shadow:    0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow:         0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+}
