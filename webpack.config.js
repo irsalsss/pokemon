@@ -4,6 +4,9 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 const path = require('path');
 
 module.exports = {
+  output: {
+    publicPath: "/"
+  },
   module: {
     rules: [
       {
@@ -36,6 +39,13 @@ module.exports = {
           "css-loader",
           // Compiles Sass to CSS
           "sass-loader",
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
         ],
       },
       {
