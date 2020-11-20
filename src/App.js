@@ -4,12 +4,11 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Loading from './components/shared/Loading';
 import ErrorPage from './pages/ErrorPage';
 import { PokemonProvider } from './context/PokemonContext';
-import MyPokemonPage from './pages/MyPokemonPage';
 import './style.scss';
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const DetailPage = lazy(() => import('./pages/DetailPage'))
-// const MyPokemonPage = lazy(() => import('./pages/MyPokemonPage'))
+const MyPokemonPage = lazy(() => import('./pages/MyPokemonPage'))
 const Navbar = lazy(() => import('./components/navbar/Navbar'))
 
 const App = () => {
@@ -22,7 +21,7 @@ const App = () => {
           <Switch>
             <PokemonProvider>
               <Route exact path="/" component={HomePage} />
-              <Route path="/pokemon-detail/:id" component={DetailPage} />
+              <Route exact path="/pokemon-detail/:id" component={DetailPage} />
               <Route exact path="/my-pokemon" component={MyPokemonPage} />
             </PokemonProvider>
           </Switch>

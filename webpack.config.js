@@ -4,6 +4,10 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 const path = require('path');
 
 module.exports = {
+  devServer: {
+    port: 8080,
+    historyApiFallback: true,
+  },
   output: {
     publicPath: "/"
   },

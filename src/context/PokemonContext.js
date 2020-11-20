@@ -1,12 +1,13 @@
 import React, { useState, useContext, createContext } from "react";
 import produce from "immer";
-import { listPokemons } from '../client/PokemonApi';
+import { listPokemons, detailPokemon } from '../client/PokemonApi';
 
 const PokemonContext = createContext();
 
 const PokemonProvider = (props) => {
   const initialState = {
-    initialData: {}
+    initialData: {},
+    singlePokemonData: {}
   }
 
   const [state, setState] = useState(initialState);
@@ -18,7 +19,7 @@ const PokemonProvider = (props) => {
 }
 
 const usePokemon = () => {
-  const [ { initialData }, immerSetState ] = useContext(PokemonContext);
+  const [ { initialData, singlePokemonData }, immerSetState ] = useContext(PokemonContext);
 
   const fetchListPokemons = async(offset) => {
     const { data } = await listPokemons({ offset })
@@ -29,9 +30,21 @@ const usePokemon = () => {
     }
   }
 
+  const fetchPokemonById = async(id) => {
+    const { data } = await detailPokemon(id)
+    if (data){
+      immerSetState(draft => {
+        draft.singlePokemonData = data;
+      })
+    }
+  }
+
   return {
     initialData,
+    singlePokemonData,
+
     fetchListPokemons,
+    fetchPokemonById
   }
 }
 
