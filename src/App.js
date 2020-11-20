@@ -3,8 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import Loading from './components/shared/Loading';
 import ErrorPage from './pages/ErrorPage';
+import { PokemonProvider } from './context/PokemonContext';
+import './style.scss';
 
 const HomePage = lazy(() => import('./pages/HomePage'))
+const DetailPage = lazy(() => import('./pages/DetailPage'))
+const Navbar = lazy(() => import('./components/navbar/Navbar'))
 
 const App = () => {
 
@@ -12,8 +16,12 @@ const App = () => {
     <Suspense fallback={<Loading />}>
       <BrowserRouter>
         <ErrorBoundary FallbackComponent={ErrorPage}>
+          <Navbar />
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            <PokemonProvider>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/my-pokemon" component={DetailPage} />
+            </PokemonProvider>
           </Switch>
         </ErrorBoundary>
       </BrowserRouter>

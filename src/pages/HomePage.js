@@ -1,27 +1,19 @@
 import React, { useEffect } from 'react';
-import { listPokemons } from '../client/PokemonApi';
-import { PrimaryButton, SecondaryButton } from '../components/shared/Button';
 import Card from '../components/shared/Card';
+import { usePokemon } from '../context/PokemonContext';
 import './HomePage.scss';
 
 const HomePage = () => {
-
-  const fetchListPokemons = async(offset) => {
-    const { data } = await listPokemons({ offset })
-    console.log(data)
-  }
-
+  const { initialData, fetchListPokemons } = usePokemon();
+  console.log('initialData', initialData)
   useEffect(() => {
     fetchListPokemons(0)
   }, [])
 
   return (
     <div className="container-home-page">
-      Ini adalah HomePage
-      <SecondaryButton>HomePage</SecondaryButton>
-      <PrimaryButton>HomePage</PrimaryButton>
       <Card>
-        <p>Bulbasaur</p>
+        <p className='text-center full-width'>Bulbasaur</p>
       </Card>
     </div>
   )
