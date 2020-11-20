@@ -1,3 +1,12 @@
 .container-home-page {
+  .title-page {
+    margin: 1.5rem 2rem;
+    text-align: center;
+  }
 
+  .list-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
 }

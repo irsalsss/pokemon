@@ -1,11 +1,13 @@
 import React from 'react';
-import './Card.scss'
+import './Card.scss';
+import { useHistory } from "react-router-dom";
 
-const Card = ({ children }) => {
+const Card = ({ children, id, owned }) => {
+  const history = useHistory();
   return (
-    <div className='container-card'>
-      <p className='yellow-box card-id'>ID: 10</p>
-      <p className='yellow-box card-total-owned'>Owned: 10</p>
+    <div className='container-card' onClick={() => history.push(`/pokemon-detail/${id}`)}>
+      <p className='yellow-box card-id'>ID: {id}</p>
+      <p className='yellow-box card-total-owned'>Owned: {owned}</p>
       {children}
     </div>
   )

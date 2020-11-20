@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Card from '../components/shared/Card';
 import { usePokemon } from '../context/PokemonContext';
+import { urlToId } from '../utils/Helper';
 import './HomePage.scss';
 
 const HomePage = () => {
@@ -12,9 +13,15 @@ const HomePage = () => {
 
   return (
     <div className="container-home-page">
-      <Card>
-        <p className='text-center full-width'>Bulbasaur</p>
-      </Card>
+      <h2 className='title-page'>List Pokemon</h2>
+
+      <div className='list-card-wrapper'>
+        {initialData.results && initialData.results.map((pokemon, idx) => (
+          <Card key={idx} id={urlToId(pokemon.url)} owned={pokemon?.owned || 0}>
+            <p className='text-center full-width capitalize'>{pokemon.name}</p>
+          </Card>
+        ))}
+      </div>
     </div>
   )
 }

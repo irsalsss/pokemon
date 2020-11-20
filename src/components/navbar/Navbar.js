@@ -9,7 +9,7 @@ const Navbar = () => {
       <ul>
         <li>
           <Link to='/'>
-            <img src={PokemonLogo} />
+            <img alt='pokemon-logo' src={PokemonLogo} />
           </Link>
         </li>
         <li>

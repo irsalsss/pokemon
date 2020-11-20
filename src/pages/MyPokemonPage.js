@@ -1,11 +1,11 @@
 import React from 'react'
 
-const DetailPage = () => {
+const MyPokemonPage = () => {
   return (
     <div>
-      ada
+
     </div>
   )
 }
 
-export default DetailPage;
+export default MyPokemonPage;
