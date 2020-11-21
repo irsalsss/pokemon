@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './MyPokemonPage.scss';
 import Card from '../components/shared/Card';
 import { usePokemon } from '../context/PokemonContext';
 
 const MyPokemonPage = () => {
-  const { dictionaryPokemon, myPokemonData, removePokemon } = usePokemon()
-  console.log('myPokemonData', myPokemonData)
+  const { dictionaryPokemon, myPokemonData, setStateMyPokemonData, removePokemon } = usePokemon()
+
+  useEffect(() => {
+    if (myPokemonData.length == 0){
+      setStateMyPokemonData()
+    }
+  }, [])
+
   return (
     <div className='container-my-pokemon'>
       <h2 className='title-page'>My Pokemon</h2>

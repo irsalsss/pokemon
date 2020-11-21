@@ -52,12 +52,21 @@ const usePokemon = () => {
   }
 
   const addMyPokemon = (pokemon) => {
-    closeModal();
+    const newDict = JSON.parse(JSON.stringify(dictionaryPokemon));
+    const newMyPokemonData = [...myPokemonData, pokemon];
+
+    newDict[pokemon.name] = (newDict[pokemon.name] || 0) + 1
+
     immerSetState(draft => {
-      draft.myPokemonData.push(pokemon);
-      draft.username = ''
-      draft.dictionaryPokemon[pokemon.name] = (dictionaryPokemon[pokemon.name] || 0) + 1
+      draft.myPokemonData = newMyPokemonData;
+      draft.username = '';
+      draft.dictionaryPokemon = newDict;
     })
+
+    localStorage.dictionaryPokemon = JSON.stringify(newDict);
+    localStorage.myPokemonData = JSON.stringify(newMyPokemonData);
+
+    closeModal();
   }
 
   const catchPokemon = () => {
@@ -74,10 +83,27 @@ const usePokemon = () => {
   }
 
   const removePokemon = (pokemon) => {
+    const newDict = JSON.parse(JSON.stringify(dictionaryPokemon));
+    const newMyPokemonData = myPokemonData.filter(poke => poke.username !== pokemon.username);
+
+    newDict[pokemon.name] = (newDict[pokemon.name] || 0) - 1;
+
     immerSetState(draft => {
-      draft.myPokemonData = myPokemonData.filter(poke => poke.username !== pokemon.username)
-      draft.dictionaryPokemon[pokemon.name] = dictionaryPokemon[pokemon.name] - 1
+      draft.myPokemonData = newMyPokemonData;
+      draft.dictionaryPokemon = newDict;
     })
+
+    localStorage.dictionaryPokemon = JSON.stringify(newDict)
+    localStorage.myPokemonData = JSON.stringify(newMyPokemonData);
+  }
+
+  const setStateMyPokemonData = () => {
+    if (localStorage.myPokemonData){
+      immerSetState(draft => {
+        draft.myPokemonData = JSON.parse(localStorage.myPokemonData || []);
+        draft.dictionaryPokemon = JSON.parse(localStorage.dictionaryPokemon || {});
+      })
+    }
   }
 
   const closeModal = () => {
@@ -108,7 +134,8 @@ const usePokemon = () => {
     resetState,
     closeModal,
     onChangePokemon,
-    removePokemon
+    removePokemon,
+    setStateMyPokemonData
   }
 }
 

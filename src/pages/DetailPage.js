@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { usePokemon } from '../context/PokemonContext';
 import { useParams } from "react-router-dom";
 import Modal from '../components/shared/Modal';
@@ -78,6 +78,7 @@ const ModalSuccess = () => {
         <div className='container-input-username'>
           <label className='mb-3' htmlFor='username'>Please give a username for your new pokemon</label>
           <input
+            autoFocus
             onChange={(e) => onChangePokemon('username', e.target.value)}
             className='input-username'
             maxLength='32'
