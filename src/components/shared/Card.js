@@ -7,7 +7,7 @@ const Card = ({ children, id, owned, withTotalOwned = false, withCloseButton = f
   const history = useHistory();
   return (
     <div className='container-card' onClick={() => history.push(`/pokemon-detail/${id}`)}>
-      <p className='yellow-box card-id'>ID: {id}</p>
+      <p className='yellow-box card-id'>Pokemon ID: {id}</p>
 
       {withTotalOwned && (
         <p className='yellow-box card-total-owned'>Owned: {owned}</p>
