@@ -1,5 +1,5 @@
 html, body {
-  width: 100%
+  width: 100%;
 }
 
 html {
@@ -44,6 +44,18 @@ body, h1, h2, h3, h4, h5, h6, h7, p {
 
 .mb-3 {
   margin-bottom: 1rem;
+}
+
+.title-page {
+  margin: 1.5rem 2rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.list-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 a:hover, a:active { text-decoration: none; color:black }

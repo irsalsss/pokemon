@@ -1,9 +1,4 @@
 .container-detail-page {
-  .title-page {
-    margin: 1.5rem 2rem;
-    text-align: center;
-    text-transform: capitalize;
-  }
 
   .image-wrapper {
     display: flex;
@@ -32,7 +27,7 @@
 
     .text-catch {
       margin-bottom: 1rem;
-      color: #b8b8b8;
+      color: #5e5e5e;
       animation: .8s shake infinite alternate;
 
       @keyframes shake {

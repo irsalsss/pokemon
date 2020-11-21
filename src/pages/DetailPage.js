@@ -90,7 +90,8 @@ const ModalSuccess = () => {
         <Button
           onClick={() => addMyPokemon({
             name: singlePokemonData.name,
-            username: username
+            username: username,
+            id: singlePokemonData.id
           })}
           customClassName='btn-primary modal-button'
         >Okay

@@ -6,6 +6,7 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 const path = require('path');
 
 module.exports = {
+  devtool: 'source-map',
   devServer: {
     port: 8080,
     historyApiFallback: true,
