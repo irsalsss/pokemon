@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { usePokemon } from '../context/PokemonContext';
 import { useParams } from "react-router-dom";
 import Modal from '../components/shared/Modal';
@@ -8,11 +8,15 @@ import Button from '../components/shared/Button';
 
 const DetailPage = () => {
   const { id } = useParams()
-  const { showModal, singlePokemonData, isPokemonCaught, catchPokemon, fetchPokemonById } = usePokemon();
+  const { myPokemonData, showModal, singlePokemonData, isPokemonCaught, catchPokemon, fetchPokemonById, setStateMyPokemonData } = usePokemon();
 
   useEffect(() => {
     if (id){
       fetchPokemonById(id)
+    }
+
+    if (myPokemonData.length == 0){
+      setStateMyPokemonData()
     }
   }, [])
 
@@ -23,8 +27,8 @@ const DetailPage = () => {
           <h2 className='title-page'>{singlePokemonData.name}</h2>
 
           <div className='image-wrapper'>
-            <img alt={singlePokemonData.name} width='96px' height='96px' src={singlePokemonData?.sprites?.front_default} />
-            <img alt={singlePokemonData.name} width='96px' height='96px' src={singlePokemonData?.sprites?.back_default} />
+            <img className='mx-2' alt={singlePokemonData.name} width='96px' height='96px' src={singlePokemonData?.sprites?.front_default} />
+            <img className='mx-2' alt={singlePokemonData.name} width='96px' height='96px' src={singlePokemonData?.sprites?.back_default} />
           </div>
 
           <div className='pokemon-information'>
@@ -69,7 +73,25 @@ const DetailPage = () => {
 }
 
 const ModalSuccess = () => {
-  const { username, singlePokemonData, addMyPokemon, onChangePokemon, closeModal } = usePokemon()
+  const { myPokemonData, username, singlePokemonData, addMyPokemon, onChangePokemon, closeModal } = usePokemon();
+  const [isError, setIsError] = useState(null);
+
+  const onSubmit = () => {
+    if (myPokemonData){
+      const isUsernameAlreadyTaken = myPokemonData.some(data => data.username == username)
+      if (isUsernameAlreadyTaken) {
+        setIsError(true)
+        setTimeout(() => {
+          setIsError(false)
+        }, 2000);
+        return;
+      };
+    }
+
+    setIsError(false);
+    addMyPokemon({ name: singlePokemonData.name, username: username, id: singlePokemonData.id })
+  }
+
   return (
     <Modal closeModal={closeModal}>
       <React.Fragment>
@@ -80,22 +102,22 @@ const ModalSuccess = () => {
           <input
             autoFocus
             onChange={(e) => onChangePokemon('username', e.target.value)}
-            className='input-username'
+            className='input-username mb-2'
             maxLength='32'
             id='username'
             type='text'
             placeholder='your new pokemon username'
           />
+
+          <p style={{ color: 'red' }}>{isError ? "Oops username can't be the same" : ""}</p>
         </div>
 
         <Button
-          onClick={() => addMyPokemon({
-            name: singlePokemonData.name,
-            username: username,
-            id: singlePokemonData.id
-          })}
+          disabled={!username}
+          onClick={() => onSubmit()}
           customClassName='btn-primary modal-button'
-        >Okay
+        >
+          Okay
         </Button>
       </React.Fragment>
     </Modal>
