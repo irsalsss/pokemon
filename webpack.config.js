@@ -1,5 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const isDevelopment = process.env.NODE_ENV === 'development'
 const path = require('path');
 
@@ -81,8 +83,14 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isDevelopment ? '[name].css' : '[name].[hash].css',
       chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
-    })
+    }),
+
+    new CompressionPlugin(),
   ],
+
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  },
 
   resolve: {
     extensions: [".js", ".jsx", ".css", ".scss", ".json", ".svg", ".png"],
