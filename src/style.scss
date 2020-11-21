@@ -61,6 +61,13 @@ body, h1, h2, h3, h4, h5, h6, h7, p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 a:hover, a:active { text-decoration: none; color:black }

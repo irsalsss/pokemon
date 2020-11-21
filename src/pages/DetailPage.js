@@ -53,7 +53,7 @@ const DetailPage = () => {
             </div>
           </div>
 
-          <div className='catch-container'>
+          <div className='flex-column-center catch-container'>
             <p className='text-catch'>catch the pokemon</p>
             <img onClick={() => catchPokemon()} className='img-pokeball' alt='catch pokemon button' width='60px' height='60px' src={Pokeball} />
           </div>

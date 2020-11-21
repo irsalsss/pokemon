@@ -1,12 +1,13 @@
 import React from 'react';
+import Button from '../components/shared/Button';
 
 const ErrorPage = () => {
   return (
-    <div>
-      <p>Something went wrong</p>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <div className='container-error-page flex-column-center'>
+      <h2 className='title-page'>Something went wrong</h2>
+      <Button onClick={() => { window.location.href = '/' }}>
         Back to homepage
-      </button>
+      </Button>
     </div>
   )
 }
