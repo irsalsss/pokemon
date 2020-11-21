@@ -18,7 +18,7 @@ const HomePage = () => {
 
   return (
     <div className="container-home-page">
-      <h2 className='title-page'>List Pokemon</h2>
+      <h2 className='title-page'>List Pokemon (Total Owned: {myPokemonData.length})</h2>
 
       <div className='list-card-wrapper'>
         {initialData.results && initialData.results.map((pokemon, idx) => (
