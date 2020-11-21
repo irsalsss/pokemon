@@ -51,8 +51,9 @@ const usePokemon = () => {
   }
 
   const addMyPokemon = (pokemon) => {
+    closeModal();
     immerSetState(draft => {
-      draft.push(pokemon)
+      draft.myPokemonData.push(pokemon)
     })
   }
 
@@ -87,6 +88,7 @@ const usePokemon = () => {
     showModal,
     isPokemonCaught,
     username,
+    myPokemonData,
 
     addMyPokemon,
     catchPokemon,

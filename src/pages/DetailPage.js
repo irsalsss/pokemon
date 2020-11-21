@@ -8,7 +8,7 @@ import Button from '../components/shared/Button';
 
 const DetailPage = () => {
   const { id } = useParams()
-  const { username, showModal, singlePokemonData, isPokemonCaught, catchPokemon, fetchPokemonById } = usePokemon();
+  const { showModal, singlePokemonData, isPokemonCaught, catchPokemon, fetchPokemonById } = usePokemon();
 
   useEffect(() => {
     if (id){
@@ -69,7 +69,7 @@ const DetailPage = () => {
 }
 
 const ModalSuccess = () => {
-  const { closeModal, onChangePokemon } = usePokemon()
+  const { username, singlePokemonData, addMyPokemon, onChangePokemon, closeModal } = usePokemon()
   return (
     <Modal closeModal={closeModal}>
       <React.Fragment>
@@ -87,7 +87,14 @@ const ModalSuccess = () => {
           />
         </div>
 
-        <Button onClick={closeModal} customClassName='btn-primary modal-button'>Okay</Button>
+        <Button
+          onClick={() => addMyPokemon({
+            name: singlePokemonData.name,
+            username: username
+          })}
+          customClassName='btn-primary modal-button'
+        >Okay
+        </Button>
       </React.Fragment>
     </Modal>
   )
