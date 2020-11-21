@@ -74,7 +74,7 @@ const DetailPage = () => {
 
 const ModalSuccess = () => {
   const { myPokemonData, username, singlePokemonData, addMyPokemon, onChangePokemon, closeModal } = usePokemon();
-  const [isError, setIsError] = useState(null);
+  const [isError, setIsError] = useState(false);
 
   const onSubmit = () => {
     if (myPokemonData){
