@@ -103,7 +103,7 @@ const ModalSuccess = () => {
             autoFocus
             onChange={(e) => onChangePokemon('username', e.target.value)}
             className='input-username mb-2'
-            maxLength='32'
+            maxLength='24'
             id='username'
             type='text'
             placeholder='your new pokemon username'

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './MyPokemonPage.scss';
 import Card from '../components/shared/Card';
 import { usePokemon } from '../context/PokemonContext';
 
@@ -14,7 +13,7 @@ const MyPokemonPage = () => {
 
   return (
     <div className='container-my-pokemon'>
-      <h2 className='title-page'>My Pokemon</h2>
+      <h2 className='title-page'>My Pokemon (Total Owned: {myPokemonData.length})</h2>
 
       <div className='list-card-wrapper'>
         {myPokemonData && myPokemonData.map((pokemon, idx) => (
@@ -28,10 +27,10 @@ const MyPokemonPage = () => {
               removePokemon({ username: pokemon.username, name: pokemon.name })
             }}
           >
-            <React.Fragment>
-              <p className='text-center full-width capitalize'>{pokemon.name}</p>
-              <p className='text-center full-width'>{pokemon.username}</p>
-            </React.Fragment>
+            <div>
+              <p className='mb-2 mt-2 full-width capitalize'>{pokemon.name}</p>
+              <p className='mb-2 mt-2 full-width'>Username: {pokemon.username}</p>
+            </div>
           </Card>
         ))}
       </div>

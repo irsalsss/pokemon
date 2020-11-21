@@ -3,12 +3,16 @@ import PropTypes from "prop-types";
 import './Card.scss';
 import { useHistory } from "react-router-dom";
 
-const Card = ({ children, id, owned, withCloseButton = false, onRemove }) => {
+const Card = ({ children, id, owned, withTotalOwned = false, withCloseButton = false, onRemove }) => {
   const history = useHistory();
   return (
     <div className='container-card' onClick={() => history.push(`/pokemon-detail/${id}`)}>
       <p className='yellow-box card-id'>ID: {id}</p>
-      <p className='yellow-box card-total-owned'>Owned: {owned}</p>
+
+      {withTotalOwned && (
+        <p className='yellow-box card-total-owned'>Owned: {owned}</p>
+      )}
+
       {withCloseButton && (
         <div onClick={onRemove} className='remove-button'>Remove</div>
       )}
@@ -22,6 +26,7 @@ Card.propTypes = {
   owned: PropTypes.number,
   children: PropTypes.element.isRequired,
   withCloseButton: PropTypes.bool,
+  withTotalOwned: PropTypes.bool,
   onRemove: PropTypes.func
 }
 

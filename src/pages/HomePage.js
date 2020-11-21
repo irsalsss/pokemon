@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Card from '../components/shared/Card';
 import { usePokemon } from '../context/PokemonContext';
 import { urlToId } from '../utils/Helper';
-import './HomePage.scss';
 
 const HomePage = () => {
   const { initialData, dictionaryPokemon, myPokemonData, fetchListPokemons, resetState, setStateMyPokemonData } = usePokemon();
@@ -22,8 +21,8 @@ const HomePage = () => {
 
       <div className='list-card-wrapper'>
         {initialData.results && initialData.results.map((pokemon, idx) => (
-          <Card key={idx} id={urlToId(pokemon.url)} owned={dictionaryPokemon[pokemon.name] || 0}>
-            <p className='text-center full-width capitalize'>{pokemon.name}</p>
+          <Card key={idx} id={urlToId(pokemon.url)} owned={dictionaryPokemon[pokemon.name] || 0} withTotalOwned={true}>
+            <p className='mb-2 mt-2 text-center full-width capitalize'>{pokemon.name}</p>
           </Card>
         ))}
       </div>
