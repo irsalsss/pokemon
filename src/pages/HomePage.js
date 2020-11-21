@@ -5,10 +5,11 @@ import { urlToId } from '../utils/Helper';
 import './HomePage.scss';
 
 const HomePage = () => {
-  const { initialData, fetchListPokemons } = usePokemon();
+  const { initialData, fetchListPokemons, resetState } = usePokemon();
   console.log('initialData', initialData)
   useEffect(() => {
     fetchListPokemons(0)
+    resetState()
   }, [])
 
   return (

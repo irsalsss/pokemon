@@ -39,12 +39,19 @@ const usePokemon = () => {
     }
   }
 
+  const resetState = () => {
+    immerSetState(draft => {
+      draft.singlePokemonData = {}
+    })
+  }
+
   return {
     initialData,
     singlePokemonData,
 
     fetchListPokemons,
-    fetchPokemonById
+    fetchPokemonById,
+    resetState
   }
 }
 

@@ -22,4 +22,12 @@ body, h1, h2, h3, h4, h5, h6, h7, p {
   text-transform: capitalize;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 a:hover, a:active { text-decoration: none; color:black }
