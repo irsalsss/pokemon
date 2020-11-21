@@ -9,6 +9,7 @@ const PokemonProvider = (props) => {
   const initialState = {
     initialData: {},
     singlePokemonData: {},
+    dictionaryPokemon: {},
     showModal: false,
     isPokemonCaught: false,
     myPokemonData: [],
@@ -24,7 +25,7 @@ const PokemonProvider = (props) => {
 }
 
 const usePokemon = () => {
-  const [ { initialData, singlePokemonData, myPokemonData, showModal, isPokemonCaught, username }, immerSetState ] = useContext(PokemonContext);
+  const [ { dictionaryPokemon, initialData, singlePokemonData, myPokemonData, showModal, isPokemonCaught, username }, immerSetState ] = useContext(PokemonContext);
 
   const fetchListPokemons = async(offset) => {
     const { data } = await listPokemons({ offset })
@@ -53,7 +54,9 @@ const usePokemon = () => {
   const addMyPokemon = (pokemon) => {
     closeModal();
     immerSetState(draft => {
-      draft.myPokemonData.push(pokemon)
+      draft.myPokemonData.push(pokemon);
+      draft.username = ''
+      draft.dictionaryPokemon[pokemon.name] = (dictionaryPokemon[pokemon.name] || 0) + 1
     })
   }
 
@@ -67,6 +70,13 @@ const usePokemon = () => {
     immerSetState(draft => {
       draft.showModal = true;
       draft.isPokemonCaught = successfullLogic()
+    })
+  }
+
+  const removePokemon = (pokemon) => {
+    immerSetState(draft => {
+      draft.myPokemonData = myPokemonData.filter(poke => poke.username !== pokemon.username)
+      draft.dictionaryPokemon[pokemon.name] = dictionaryPokemon[pokemon.name] - 1
     })
   }
 
@@ -89,6 +99,7 @@ const usePokemon = () => {
     isPokemonCaught,
     username,
     myPokemonData,
+    dictionaryPokemon,
 
     addMyPokemon,
     catchPokemon,
@@ -96,7 +107,8 @@ const usePokemon = () => {
     fetchPokemonById,
     resetState,
     closeModal,
-    onChangePokemon
+    onChangePokemon,
+    removePokemon
   }
 }
 
