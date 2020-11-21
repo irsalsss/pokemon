@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { usePokemon } from '../context/PokemonContext';
 import { useParams } from "react-router-dom";
+import Modal from '../components/shared/Modal';
 import Pokeball from '../../public/assets/img/pokeball.png';
 import './DetailPage.scss';
+import Button from '../components/shared/Button';
 
 const DetailPage = () => {
   const { id } = useParams()
-  const { singlePokemonData, fetchPokemonById } = usePokemon();
-  console.log('singlePokemonData', singlePokemonData)
+  const { username, showModal, singlePokemonData, isPokemonCaught, catchPokemon, fetchPokemonById } = usePokemon();
 
   useEffect(() => {
     if (id){
@@ -50,12 +51,58 @@ const DetailPage = () => {
 
           <div className='catch-container'>
             <p className='text-catch'>catch the pokemon</p>
-            <img className='img-pokeball' alt='catch pokemon button' width='60px' height='60px' src={Pokeball} />
+            <img onClick={() => catchPokemon()} className='img-pokeball' alt='catch pokemon button' width='60px' height='60px' src={Pokeball} />
           </div>
 
         </React.Fragment>
       )}
+
+      {showModal && isPokemonCaught && (
+        <ModalSuccess />
+      )}
+
+      {showModal && !isPokemonCaught && (
+        <ModalFailure />
+      )}
     </div>
+  )
+}
+
+const ModalSuccess = () => {
+  const { closeModal, onChangePokemon } = usePokemon()
+  return (
+    <Modal closeModal={closeModal}>
+      <React.Fragment>
+        <h2 className='mb-3'>Success!</h2>
+
+        <div className='container-input-username'>
+          <label className='mb-3' htmlFor='username'>Please give a username for your new pokemon</label>
+          <input
+            onChange={(e) => onChangePokemon('username', e.target.value)}
+            className='input-username'
+            maxLength='32'
+            id='username'
+            type='text'
+            placeholder='your new pokemon username'
+          />
+        </div>
+
+        <Button onClick={closeModal} customClassName='btn-primary modal-button'>Okay</Button>
+      </React.Fragment>
+    </Modal>
+  )
+}
+
+const ModalFailure = () => {
+  const { closeModal } = usePokemon()
+  return (
+    <Modal closeModal={closeModal}>
+      <React.Fragment>
+        <h2 className='mb-3'>Failed!</h2>
+        <p className='mb-3'>Please try again...</p>
+        <Button customClassName='btn-secondary modal-button' onClick={closeModal}>Okay</Button>
+      </React.Fragment>
+    </Modal>
   )
 }
 

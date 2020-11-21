@@ -1,13 +1,18 @@
 import React, { useState, useContext, createContext } from "react";
 import produce from "immer";
 import { listPokemons, detailPokemon } from '../client/PokemonApi';
+import { successfullLogic } from "../utils/Helper";
 
 const PokemonContext = createContext();
 
 const PokemonProvider = (props) => {
   const initialState = {
     initialData: {},
-    singlePokemonData: {}
+    singlePokemonData: {},
+    showModal: false,
+    isPokemonCaught: false,
+    myPokemonData: [],
+    username: '',
   }
 
   const [state, setState] = useState(initialState);
@@ -19,7 +24,7 @@ const PokemonProvider = (props) => {
 }
 
 const usePokemon = () => {
-  const [ { initialData, singlePokemonData }, immerSetState ] = useContext(PokemonContext);
+  const [ { initialData, singlePokemonData, myPokemonData, showModal, isPokemonCaught, username }, immerSetState ] = useContext(PokemonContext);
 
   const fetchListPokemons = async(offset) => {
     const { data } = await listPokemons({ offset })
@@ -39,6 +44,37 @@ const usePokemon = () => {
     }
   }
 
+  const onChangePokemon = (id, value) => {
+    immerSetState(draft => {
+      draft[id] = value
+    })
+  }
+
+  const addMyPokemon = (pokemon) => {
+    immerSetState(draft => {
+      draft.push(pokemon)
+    })
+  }
+
+  const catchPokemon = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+
+    immerSetState(draft => {
+      draft.showModal = true;
+      draft.isPokemonCaught = successfullLogic()
+    })
+  }
+
+  const closeModal = () => {
+    immerSetState(draft => {
+      draft.showModal = false;
+    })
+  }
+
   const resetState = () => {
     immerSetState(draft => {
       draft.singlePokemonData = {}
@@ -48,10 +84,17 @@ const usePokemon = () => {
   return {
     initialData,
     singlePokemonData,
+    showModal,
+    isPokemonCaught,
+    username,
 
+    addMyPokemon,
+    catchPokemon,
     fetchListPokemons,
     fetchPokemonById,
-    resetState
+    resetState,
+    closeModal,
+    onChangePokemon
   }
 }
 
