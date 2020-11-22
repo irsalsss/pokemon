@@ -12,8 +12,9 @@ module.exports = {
     historyApiFallback: true
   },
   output: {
-    filename: 'index_bundle.js',
-    path: path.resolve(__dirname, './dist'),
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   module: {
     rules: [
