@@ -80,8 +80,7 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css'
+      filename: '[name].[contenthash].css',
     }),
 
     new CompressionPlugin(),
