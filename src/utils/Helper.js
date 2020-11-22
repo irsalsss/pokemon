@@ -4,5 +4,5 @@ export const urlToId = (url) => {
 
 export const successfullLogic = () => {
   const randomNumber =  Math.floor(Math.random() * Math.floor(100));
-  return randomNumber < 50;
+  return randomNumber > 50;
 }
