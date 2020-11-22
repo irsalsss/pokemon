@@ -1,9 +1,8 @@
 import axios from 'axios';
 import qs from 'qs';
 
-async function client(url, { body, method, params } = {}){
+async function client(endpoint, { body, method, params } = {}){
   const cache = sessionStorage.cache ? JSON.parse(sessionStorage.cache) : {}
-  const endpoint = 'https://pokeapi.co/api/v2' + url;
   const Axios = axios.create();
 
   if (cache[endpoint]){

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import Card from '../components/shared/Card';
 import { usePokemon } from '../context/PokemonContext';
-import { urlToId } from '../utils/Helper';
+import { loadMoreValidator, urlToId } from '../utils/Helper';
 
 const HomePage = () => {
   const {
     initialData, dictionaryPokemon, myPokemonData,
-    fetchListPokemons, resetState, setStateMyPokemonData
+    fetchListPokemons, fetchMorePokemons, resetState, setStateMyPokemonData
   } = usePokemon();
   console.log('initialData', initialData)
   useEffect(() => {
@@ -18,8 +18,16 @@ const HomePage = () => {
     }
   }, [])
 
+  const _onScroll = (e) => {
+    const target = e.target;
+
+    if (initialData.next){
+      loadMoreValidator(target, 10, () => fetchMorePokemons(initialData.next))
+    }
+  }
+
   return (
-    <div className="container-home-page">
+    <div className="container-home-page" onScroll={e => _onScroll(e)}>
       <h2 className='title-page'>List Pokemon</h2>
       <h2 className='title-page'>(Total Owned: {myPokemonData.length})</h2>
 
