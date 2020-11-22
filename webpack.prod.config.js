@@ -9,12 +9,12 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -75,7 +75,10 @@ module.exports = {
   },
 
   plugins: [
-    new HtmlWebPackPlugin(),
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "./index.html"
+    }),
 
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
