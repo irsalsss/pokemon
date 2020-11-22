@@ -8,7 +8,7 @@ const HomePage = () => {
     initialData, dictionaryPokemon, myPokemonData,
     fetchListPokemons, fetchMorePokemons, resetState, setStateMyPokemonData
   } = usePokemon();
-  console.log('initialData', initialData)
+
   useEffect(() => {
     fetchListPokemons(0)
     resetState()
