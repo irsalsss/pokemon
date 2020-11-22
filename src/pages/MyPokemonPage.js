@@ -13,7 +13,8 @@ const MyPokemonPage = () => {
 
   return (
     <div className='container-my-pokemon'>
-      <h2 className='title-page'>My Pokemon (Total Owned: {myPokemonData.length})</h2>
+      <h2 className='title-page'>My Pokemon</h2>
+      <h2 className='title-page'>(Total Owned: {myPokemonData.length})</h2>
 
       <div className='list-card-wrapper'>
         {myPokemonData && myPokemonData.map((pokemon, idx) => (

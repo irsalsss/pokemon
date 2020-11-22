@@ -2,13 +2,20 @@ import axios from 'axios';
 import qs from 'qs';
 
 async function client(url, { body, method, params } = {}){
-  const Axios = axios.create()
+  const cache = sessionStorage.cache ? JSON.parse(sessionStorage.cache) : {}
+  const endpoint = 'https://pokeapi.co/api/v2' + url;
+  const Axios = axios.create();
+
+  if (cache[endpoint]){
+    return { data: cache[endpoint] };
+  }
+
   let headers = {
     "Content-type": "application/json; charset=UTF-8",
   }
 
   let config = {
-    url: 'https://pokeapi.co/api/v2' + url,
+    url: endpoint,
     headers: {
       ...headers
     },
@@ -32,6 +39,7 @@ async function client(url, { body, method, params } = {}){
   }
 
   const onSuccess = (r) => {
+    sessionStorage.cache = JSON.stringify({ ...cache, [endpoint]: r.data } || {})
     return r
   }
 
