@@ -10,8 +10,9 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     historyApiFallback: {
-      index: '/'
-    }
+      index: '/public'
+    },
+    // contentBase: '/',
   },
   output: {
     filename: '[name].[contenthash].js',
