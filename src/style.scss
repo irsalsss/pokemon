@@ -6,6 +6,10 @@ html {
   font-size: 100%;
 }
 
+body {
+  overflow: hidden;
+}
+
 body, h1, h2, h3, h4, h5, h6, h7, p {
   margin: 0;
 }
@@ -81,13 +85,18 @@ body, h1, h2, h3, h4, h5, h6, h7, p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .flex-column-center {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.container-home-page, .container-detail-page, .container-my-pokemon {
+  overflow: scroll;
+  height: 600px;
 }
 
 a:hover, a:active { text-decoration: none; color:black }
