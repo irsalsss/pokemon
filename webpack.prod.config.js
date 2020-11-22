@@ -9,13 +9,10 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
   devServer: {
-    historyApiFallback: {
-      index: '/dist'
-    },
-    // contentBase: '/',
+    historyApiFallback: true
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: 'index_bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: "/"
   },
