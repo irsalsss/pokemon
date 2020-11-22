@@ -10,7 +10,7 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     historyApiFallback: {
-      index: 'dist/index.html'
+      index: '/'
     }
   },
   output: {
