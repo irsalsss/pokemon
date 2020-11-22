@@ -3,14 +3,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const isDevelopment = process.env.NODE_ENV === 'development'
 const path = require('path');
 
 module.exports = {
+  mode: 'production',
   devtool: 'source-map',
-  devServer: {
-    port: 8080,
-    historyApiFallback: true,
+  output: {
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist')
   },
   output: {
     publicPath: "/"
@@ -49,8 +49,8 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader",
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
@@ -80,8 +80,8 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-      chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css'
     }),
 
     new CompressionPlugin(),
