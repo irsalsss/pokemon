@@ -9,7 +9,9 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      index: 'dist/index.html'
+    }
   },
   output: {
     filename: '[name].[contenthash].js',
