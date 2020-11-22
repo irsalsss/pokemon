@@ -8,7 +8,10 @@ import Button from '../components/shared/Button';
 
 const DetailPage = () => {
   const { id } = useParams()
-  const { myPokemonData, showModal, singlePokemonData, isPokemonCaught, catchPokemon, fetchPokemonById, setStateMyPokemonData } = usePokemon();
+  const {
+    myPokemonData, showModal, singlePokemonData, isPokemonCaught,
+    catchPokemon, fetchPokemonById, setStateMyPokemonData
+  } = usePokemon();
 
   useEffect(() => {
     if (id){

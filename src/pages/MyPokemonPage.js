@@ -3,9 +3,10 @@ import Card from '../components/shared/Card';
 import { usePokemon } from '../context/PokemonContext';
 
 const MyPokemonPage = () => {
-  const { dictionaryPokemon, myPokemonData, setStateMyPokemonData, removePokemon } = usePokemon()
+  const { dictionaryPokemon, myPokemonData, resetState, setStateMyPokemonData, removePokemon } = usePokemon()
 
   useEffect(() => {
+    resetState()
     if (myPokemonData.length == 0){
       setStateMyPokemonData()
     }

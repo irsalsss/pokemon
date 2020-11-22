@@ -4,7 +4,10 @@ import { usePokemon } from '../context/PokemonContext';
 import { urlToId } from '../utils/Helper';
 
 const HomePage = () => {
-  const { initialData, dictionaryPokemon, myPokemonData, fetchListPokemons, resetState, setStateMyPokemonData } = usePokemon();
+  const {
+    initialData, dictionaryPokemon, myPokemonData,
+    fetchListPokemons, resetState, setStateMyPokemonData
+  } = usePokemon();
   console.log('initialData', initialData)
   useEffect(() => {
     fetchListPokemons(0)
