@@ -112,7 +112,7 @@ const ModalSuccess = () => {
             placeholder='your new pokemon username'
           />
 
-          <p style={{ color: 'red' }}>{isError ? "Oops username can't be the same" : ""}</p>
+          <p className='color-red'>{isError ? "Oops username can't be the same" : ""}</p>
         </div>
 
         <Button
