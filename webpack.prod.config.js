@@ -2,6 +2,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
@@ -85,6 +86,8 @@ module.exports = {
     }),
 
     new CompressionPlugin(),
+
+    new RobotstxtPlugin()
   ],
 
   optimization: {
