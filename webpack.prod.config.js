@@ -8,11 +8,12 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
-  output: {
-    filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist')
+  devServer: {
+    historyApiFallback: true,
   },
   output: {
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
     publicPath: "/"
   },
   module: {
