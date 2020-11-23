@@ -22,7 +22,7 @@ const HomePage = () => {
     const target = e.target;
 
     if (initialData.next){
-      loadMoreValidator(target, 10, () => fetchMorePokemons(initialData.next))
+      loadMoreValidator(target, 30, () => fetchMorePokemons(initialData.next))
     }
   }
 
