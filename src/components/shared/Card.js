@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 const Card = ({ children, id, owned, withTotalOwned = false, withCloseButton = false, onRemove }) => {
   const history = useHistory();
   return (
-    <div className='container-card' onClick={() => history.push(`/pokemon-detail/${id}`)}>
+    <div data-cy={`pokemon-card-${id}`} className='container-card' onClick={() => history.push(`/pokemon-detail/${id}`)}>
       <p className='yellow-box card-id'>Pokemon ID: {id}</p>
 
       {withTotalOwned && (
