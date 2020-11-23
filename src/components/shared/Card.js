@@ -14,7 +14,7 @@ const Card = ({ children, id, owned, withTotalOwned = false, withCloseButton = f
       )}
 
       {withCloseButton && (
-        <div onClick={onRemove} className='remove-button'>Remove</div>
+        <div data-cy="remove-button" onClick={onRemove} className='remove-button'>Remove</div>
       )}
       {children}
     </div>

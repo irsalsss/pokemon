@@ -27,7 +27,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className="container-home-page" onScroll={e => _onScroll(e)}>
+    <div className="container-home-page" data-cy="container-home-page" onScroll={e => _onScroll(e)}>
       <h2 className='title-page'>List Pokemon</h2>
       <h2 className='title-page'>(Total Owned: {myPokemonData.length})</h2>
 

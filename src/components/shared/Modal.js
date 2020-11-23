@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from "prop-types";
 import './Modal.scss';
 
-const Modal = ({ children, closeModal }) => {
+const Modal = ({ datacy = "modal", children, closeModal }) => {
   return (
-    <div className='modal'>
+    <div data-cy={datacy} className='modal'>
       <div className="overlay-modal" onClick={closeModal}></div>
       <div className="modal-content">
         {children}
@@ -14,6 +14,7 @@ const Modal = ({ children, closeModal }) => {
 }
 
 Modal.propTypes = {
+  datacy: PropTypes.string,
   closeModal: PropTypes.func,
   children: PropTypes.element.isRequired
 }

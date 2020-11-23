@@ -27,7 +27,7 @@ const DetailPage = () => {
     <div className='container-detail-page'>
       {Object.keys(singlePokemonData).length !== 0 && (
         <React.Fragment>
-          <h2 className='title-page'>{singlePokemonData.name}</h2>
+          <h2 data-cy={`pokemon-title-${singlePokemonData.id}`} className='title-page'>{singlePokemonData.name}</h2>
 
           <div className='image-wrapper'>
             <img className='mx-2' alt={singlePokemonData.name} width='96px' height='96px' src={singlePokemonData?.sprites?.front_default} />
@@ -56,7 +56,7 @@ const DetailPage = () => {
             </div>
           </div>
 
-          <div className='flex-column-center catch-container'>
+          <div data-cy={`container-button-catcher-${singlePokemonData.id}`} className='flex-column-center catch-container'>
             <p className='text-catch'>catch the pokemon</p>
             <img onClick={() => catchPokemon()} className='img-pokeball' alt='catch pokemon button' width='60px' height='60px' src={Pokeball} />
           </div>
@@ -98,11 +98,12 @@ const ModalSuccess = () => {
   return (
     <Modal closeModal={closeModal}>
       <React.Fragment>
-        <h2 className='mb-3'>Success!</h2>
+        <h2 data-cy="modal-title" className='mb-3'>Success!</h2>
 
         <div className='container-input-username'>
           <label className='mb-3' htmlFor='username'>Please give a username for your new pokemon</label>
           <input
+            data-cy="input-username"
             autoFocus
             onChange={(e) => onChangePokemon('username', e.target.value)}
             className='input-username mb-2'
@@ -116,6 +117,7 @@ const ModalSuccess = () => {
         </div>
 
         <Button
+          datacy='button-username'
           disabled={!username}
           onClick={() => onSubmit()}
           customClassName='btn-primary modal-button'
@@ -132,9 +134,9 @@ const ModalFailure = () => {
   return (
     <Modal closeModal={closeModal}>
       <React.Fragment>
-        <h2 className='mb-3'>Failed!</h2>
+        <h2 data-cy="modal-title" className='mb-3'>Failed!</h2>
         <p className='mb-3'>Please try again...</p>
-        <Button customClassName='btn-secondary modal-button' onClick={closeModal}>Okay</Button>
+        <Button datacy="button-close" customClassName='btn-secondary modal-button' onClick={closeModal}>Okay</Button>
       </React.Fragment>
     </Modal>
   )
