@@ -52,3 +52,11 @@
     }
   }
 }
+
+@media (min-width: 1280px) {
+  .container-card {
+    overflow: scroll;
+    height: 100px;
+    width: 260px;
+  }
+}
