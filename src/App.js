@@ -20,11 +20,11 @@ const App = () => {
           <Navbar />
           <Switch>
             <PokemonProvider>
-              <Redirect to="/" />
               <Route exact path="/" component={HomePage} />
               <Route exact path="/pokemon-detail/:id" component={DetailPage} />
               <Route exact path="/my-pokemon" component={MyPokemonPage} />
             </PokemonProvider>
+            <Redirect to="/" />
           </Switch>
         </ErrorBoundary>
       </BrowserRouter>

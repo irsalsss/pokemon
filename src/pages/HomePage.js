@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Card from '../components/shared/Card';
+import TitlePage from '../components/shared/TitlePage';
 import { usePokemon } from '../context/PokemonContext';
 import { loadMoreValidator, urlToId } from '../utils/Helper';
 
@@ -28,8 +29,7 @@ const HomePage = () => {
 
   return (
     <div className="container-home-page" data-cy="container-home-page" onScroll={e => _onScroll(e)}>
-      <h2 className='title-page'>List Pokemon</h2>
-      <h2 className='title-page'>(Total Owned: {myPokemonData.length})</h2>
+      <TitlePage title='list pokemon' total={myPokemonData.length} />
 
       <div className='list-card-wrapper'>
         {initialData.results && initialData.results.map((pokemon, idx) => (

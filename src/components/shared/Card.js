@@ -3,25 +3,26 @@ import PropTypes from "prop-types";
 import './Card.scss';
 import { useHistory } from "react-router-dom";
 
-const Card = ({ children, id, owned, withTotalOwned = false, withCloseButton = false, onRemove }) => {
+const Card = ({ children, id, owned, withTotalOwned = false, withCloseButton = false, onRemove, unique }) => {
   const history = useHistory();
+  const uniqueId = unique || id;
   return (
     <div
-      data-testid={`pokemon-card-${id}`}
-      data-cy={`pokemon-card-${id}`}
+      data-testid={`pokemon-card-${uniqueId}`}
+      data-cy={`pokemon-card-${uniqueId}`}
       className='container-card'
-      onClick={(e) => history.push(`/pokemon-detail/${id}`)}
+      onClick={() => history.push(`/pokemon-detail/${id}`)}
     >
-      <p data-testid={`pokemon-id-${id}`} className='yellow-box card-id'>Pokemon ID: {id}</p>
+      <p data-testid={`pokemon-id-${id}`} data-cy={`pokemon-id-${id}`} className='yellow-box card-id'>Pokemon ID: {id}</p>
 
       {withTotalOwned && (
-        <p data-testid={`total-owned-${id}`} className='yellow-box card-total-owned'>Owned: {owned}</p>
+        <p data-testid={`total-owned-${id}`} data-cy={`total-owned-${id}`} className='yellow-box card-total-owned'>Owned: {owned}</p>
       )}
 
       {withCloseButton && (
         <div
-          data-testid={`remove-card-button-${id}`}
-          data-cy={`remove-card-button-${id}`}
+          data-testid={`remove-card-button-${uniqueId}`}
+          data-cy={`remove-card-button-${uniqueId}`}
           onClick={onRemove}
           className='remove-button'
         >
@@ -39,7 +40,8 @@ Card.propTypes = {
   children: PropTypes.element.isRequired,
   withCloseButton: PropTypes.bool,
   withTotalOwned: PropTypes.bool,
-  onRemove: PropTypes.func
+  onRemove: PropTypes.func,
+  unique: PropTypes.string
 }
 
 export default Card;

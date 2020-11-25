@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Card from '../components/shared/Card';
+import TitlePage from '../components/shared/TitlePage';
 import { usePokemon } from '../context/PokemonContext';
 
 const MyPokemonPage = () => {
@@ -14,14 +15,14 @@ const MyPokemonPage = () => {
 
   return (
     <div className='container-my-pokemon'>
-      <h2 className='title-page'>My Pokemon</h2>
-      <h2 className='title-page'>(Total Owned: {myPokemonData.length})</h2>
+      <TitlePage title='my pokemon' total={myPokemonData.length} />
 
       <div className='list-card-wrapper'>
         {myPokemonData && myPokemonData.map((pokemon, idx) => (
           <Card
             key={idx}
             id={String(pokemon.id)}
+            unique={pokemon.username}
             owned={dictionaryPokemon[pokemon.name] || 0}
             withCloseButton={true}
             onRemove={(e) =>  {
