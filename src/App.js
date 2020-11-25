@@ -6,10 +6,6 @@ import ErrorPage from './pages/ErrorPage';
 import { PokemonProvider } from './context/PokemonContext';
 import './style.scss';
 
-const NoMatch = () => (
-  <p>No Match</p>
-);
-
 const HomePage = lazy(() => import('./pages/HomePage'))
 const DetailPage = lazy(() => import('./pages/DetailPage'))
 const MyPokemonPage = lazy(() => import('./pages/MyPokemonPage'))
@@ -27,7 +23,6 @@ const App = () => {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/pokemon-detail/:id" component={DetailPage} />
               <Route exact path="/my-pokemon" component={MyPokemonPage} />
-              <Route path="*" component={ErrorPage} />
             </PokemonProvider>
           </Switch>
         </ErrorBoundary>
