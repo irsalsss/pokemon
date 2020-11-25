@@ -5,6 +5,7 @@ import Modal from '../components/shared/Modal';
 import Pokeball from '../../public/assets/img/pokeball.png';
 import './DetailPage.scss';
 import Button from '../components/shared/Button';
+import TitlePage from '../components/shared/TitlePage';
 
 const DetailPage = () => {
   const { id } = useParams()
@@ -27,7 +28,7 @@ const DetailPage = () => {
     <div className='container-detail-page'>
       {Object.keys(singlePokemonData).length !== 0 && (
         <React.Fragment>
-          <h2 data-cy={`pokemon-title-${singlePokemonData.id}`} className='text-center mt-4 capitalize'>{singlePokemonData.name}</h2>
+          <TitlePage title={singlePokemonData.name} />
 
           <div className='image-wrapper'>
             <img className='mx-2' alt={singlePokemonData.name} width='96px' height='96px' src={singlePokemonData?.sprites?.front_default} />

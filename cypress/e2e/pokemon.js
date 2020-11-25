@@ -85,8 +85,8 @@ describe('Pokemon test', () => {
     cy.wait('@getListPokemon')
     cy.get(`[data-cy=pokemon-card-1]`).click()
     cy.wait('@getSinglePokemon');
-    cy.get('[data-cy=pokemon-title-1]').should('contain', 'bulbasaur')
-    cy.get('[data-cy=container-button-catcher-1]').should('be.visible')
+    cy.get('[data-cy="title-page"]').should('contain', 'bulbasaur')
+    cy.get('[data-cy="container-button-catcher-1"]').should('be.visible')
     recursiveCatchPokemon();
 
     cy.visit('/my-pokemon');
