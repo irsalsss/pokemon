@@ -103,10 +103,17 @@ body, h1, h2, h3, h4, h5, h6, h7, p {
   height: 600px;
 }
 
-@media (min-width: 1280px) {
+@media (min-height: 1024px) {
   .container-home-page, .container-detail-page, .container-my-pokemon {
     overflow: scroll;
     height: 900px;
+  }
+}
+
+@media (min-height: 1200px) {
+  .container-home-page, .container-detail-page, .container-my-pokemon {
+    overflow: scroll;
+    height: 1100px;
   }
 }
 
