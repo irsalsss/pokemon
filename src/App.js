@@ -20,7 +20,7 @@ const App = () => {
           <Navbar />
           <Switch>
             <PokemonProvider>
-              <Redirect to={{pathname: "/"}} />
+              <Redirect to="/" />
               <Route exact path="/" component={HomePage} />
               <Route exact path="/pokemon-detail/:id" component={DetailPage} />
               <Route exact path="/my-pokemon" component={MyPokemonPage} />

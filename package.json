@@ -2,7 +2,10 @@
   "name": "pokemon",
   "jest": {
     "testPathIgnorePatterns": ["<rootDir>/node_modules/"],
-    "moduleFileExtensions": ["js"]
+    "moduleFileExtensions": ["js"],
+    "moduleNameMapper": {
+      "^.+\\.(css|less|scss)$": "babel-jest"
+    }
   },
   "version": "1.0.0",
   "description": "",

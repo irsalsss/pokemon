@@ -5,6 +5,7 @@ import './Button.scss';
 const Button = ({ onClick, customClassName, children, disabled = false, datacy = '' }) => {
   return (
     <button
+      data-testid="button"
       data-cy={datacy}
       disabled={disabled}
       onClick={onClick}

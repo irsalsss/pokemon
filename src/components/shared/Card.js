@@ -6,15 +6,27 @@ import { useHistory } from "react-router-dom";
 const Card = ({ children, id, owned, withTotalOwned = false, withCloseButton = false, onRemove }) => {
   const history = useHistory();
   return (
-    <div data-cy={`pokemon-card-${id}`} className='container-card' onClick={() => history.push(`/pokemon-detail/${id}`)}>
-      <p className='yellow-box card-id'>Pokemon ID: {id}</p>
+    <div
+      data-testid={`pokemon-card-${id}`}
+      data-cy={`pokemon-card-${id}`}
+      className='container-card'
+      onClick={(e) => history.push(`/pokemon-detail/${id}`)}
+    >
+      <p data-testid={`pokemon-id-${id}`} className='yellow-box card-id'>Pokemon ID: {id}</p>
 
       {withTotalOwned && (
-        <p className='yellow-box card-total-owned'>Owned: {owned}</p>
+        <p data-testid={`total-owned-${id}`} className='yellow-box card-total-owned'>Owned: {owned}</p>
       )}
 
       {withCloseButton && (
-        <div data-cy="remove-button" onClick={onRemove} className='remove-button'>Remove</div>
+        <div
+          data-testid={`remove-card-button-${id}`}
+          data-cy={`remove-card-button-${id}`}
+          onClick={onRemove}
+          className='remove-button'
+        >
+          Remove
+        </div>
       )}
       {children}
     </div>
