@@ -27,7 +27,7 @@ const DetailPage = () => {
     <div className='container-detail-page'>
       {Object.keys(singlePokemonData).length !== 0 && (
         <React.Fragment>
-          <h2 data-cy={`pokemon-title-${singlePokemonData.id}`} className='title-page'>{singlePokemonData.name}</h2>
+          <h2 data-cy={`pokemon-title-${singlePokemonData.id}`} className='text-center mt-4 capitalize'>{singlePokemonData.name}</h2>
 
           <div className='image-wrapper'>
             <img className='mx-2' alt={singlePokemonData.name} width='96px' height='96px' src={singlePokemonData?.sprites?.front_default} />
