@@ -1,9 +1,5 @@
 import { urlToId, successfullLogic } from "./Helper";
 
-const mockMath = Object.create(global.Math);
-mockMath.random = () => 0.5;
-global.Math = mockMath;
-
 describe("Test all helper function", () => {
   afterEach(() => {
     jest.spyOn(global.Math, 'random').mockRestore();

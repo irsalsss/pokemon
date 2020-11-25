@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import Loading from './components/shared/Loading';
 import ErrorPage from './pages/ErrorPage';
@@ -20,6 +20,7 @@ const App = () => {
           <Navbar />
           <Switch>
             <PokemonProvider>
+              <Redirect to={{pathname: "/"}} />
               <Route exact path="/" component={HomePage} />
               <Route exact path="/pokemon-detail/:id" component={DetailPage} />
               <Route exact path="/my-pokemon" component={MyPokemonPage} />
