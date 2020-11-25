@@ -1,11 +1,11 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Card from './Card';
 
 afterEach(cleanup)
 
-describe('button component', () => {
+describe('card component', () => {
   it('renders correctly', () => {
     const { getByTestId } = render (
       <Card withTotalOwned={true} owned={10} id={"1"}>
