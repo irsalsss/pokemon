@@ -2,12 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 async function client(endpoint, { body, method, params } = {}){
-  const cache = sessionStorage.cache ? JSON.parse(sessionStorage.cache) : {}
   const Axios = axios.create();
-
-  if (cache[endpoint]){
-    return { data: cache[endpoint] };
-  }
 
   let headers = {
     "Content-type": "application/json; charset=UTF-8",
@@ -38,7 +33,6 @@ async function client(endpoint, { body, method, params } = {}){
   }
 
   const onSuccess = (r) => {
-    sessionStorage.cache = JSON.stringify({ ...cache, [endpoint]: r.data } || {})
     return r
   }
 

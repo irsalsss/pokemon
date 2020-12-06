@@ -4,6 +4,8 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const RobotstxtPlugin = require("robotstxt-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
+
 const path = require('path');
 
 module.exports = {
@@ -86,6 +88,18 @@ module.exports = {
     }),
 
     new CompressionPlugin(),
+
+    new InjectManifest({
+      swSrc: "./src/src-sw.js",
+      swDest: "sw.js",
+      exclude: [
+        /\.map$/,
+        /manifest$/,
+        /\.htaccess$/,
+        /service-worker\.js$/,
+        /sw\.js$/,
+      ]
+    }),
 
     new RobotstxtPlugin()
   ],

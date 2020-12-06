@@ -64,9 +64,6 @@ describe('Pokemon test', () => {
   it('should show list pokemon card correctly', () => {
     cy.clearLocalStorage('dictionaryPokemon')
     cy.clearLocalStorage('myPokemonData')
-    cy.window().then((win) => {
-      win.sessionStorage.clear()
-    })
     cy.visit('/')
     cy.wait('@getListPokemon')
     for (let i = 1; i <= pokemonResult.length; i++){
@@ -78,9 +75,6 @@ describe('Pokemon test', () => {
   it("should catch pokemon", () => {
     cy.clearLocalStorage('dictionaryPokemon')
     cy.clearLocalStorage('myPokemonData')
-    cy.window().then((win) => {
-      win.sessionStorage.clear()
-    })
     cy.visit('/')
     cy.wait('@getListPokemon')
     cy.get(`[data-cy=pokemon-card-1]`).click()
