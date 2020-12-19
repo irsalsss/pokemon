@@ -19,6 +19,5 @@
   "start_url": "/",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "/",
   "theme_color": "#ffde00"
 }
