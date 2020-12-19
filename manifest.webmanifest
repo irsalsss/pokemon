@@ -4,13 +4,13 @@
   "description": "Pokemon information",
   "icons": [
     {
-      "src": "/public/assets/img/pokemon.png",
+      "src": "/public/assets/img/192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "/public/assets/img/pokemon.png",
+      "src": "/public/assets/img/512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"

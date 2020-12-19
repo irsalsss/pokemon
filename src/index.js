@@ -8,7 +8,6 @@ if ("serviceWorker" in navigator){
     const wb = new Workbox("/sw.js");
     const updateButton = document.querySelector("#app-update");
 
-    wb.register();
     wb.addEventListener("waiting", event => {
       updateButton && updateButton.classList.add("show");
       updateButton.addEventListener("click", () => {
@@ -22,6 +21,8 @@ if ("serviceWorker" in navigator){
         wb.messageSW({ type: "SKIP_WAITING" });
       });
     });
+
+    wb.register();
   })
 }
 
