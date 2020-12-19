@@ -6,9 +6,9 @@ import { ExpirationPlugin } from 'workbox-expiration';
 precacheAndRoute(self.__WB_MANIFEST);
 
 registerRoute(
-  /https:\/\/api\.exchangeratesapi\.io\/latest/,
+  "https://pokeapi.co/api/v2/pokemon",
   new NetworkFirst({
-    cacheName: "currencies",
+    cacheName: "pokemon",
     plugins: [
       new ExpirationPlugin({
         maxAgeSeconds: 10 * 60 // 10 minutes
